@@ -5,12 +5,15 @@ FROM frolvlad/alpine-oraclejdk8:latest
 MAINTAINER David Filiatrault <david.filiatrault+docker@gmail.com>
 # Credits
 # Adapted from payaradocker/payaraserver which was ubuntu based
+# Built via docker build -t fireballdwf/alpine-payara:latest .
+
 
 RUN apk add --update curl && rm -rf /var/cache/apk/*
 
+ENV PKG_VERSION payara-4.1.1.161.1
+ENV PKG_FILE_NAME $PKG_VERSION.zip
+ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+4.1.1.161.1/$PKG_FILE_NAME
 
-ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+4.1.1.161/payara-4.1.1.161.zip
-ENV PKG_FILE_NAME payara-4.1.1.161.zip
 
 ENV GLASSFISH_INSTALL_DIR /opt/payara41/glassfish
 
