@@ -12,7 +12,8 @@ MAINTAINER David Filiatrault <david.filiatrault+docker@gmail.com>
 # RUN apk add --update curl && rm -rf /var/cache/apk/*
 RUN apk add --update ca-certificates && rm -rf /var/cache/apk/*
 
-ENV PKG_VERSION 4.1.1.162
+ENV PKG_VERSION 4.1.1.161.1
+#ENV PKG_VERSION 4.1.1.162
 #ENV PKG_VERSION 4.1.1.154
 ENV PKG_FILE_NAME payara-$PKG_VERSION.zip
 ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PKG_VERSION/$PKG_FILE_NAME
