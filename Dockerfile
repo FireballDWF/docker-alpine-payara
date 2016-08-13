@@ -10,7 +10,8 @@ MAINTAINER David Filiatrault <david.filiatrault+docker@gmail.com>
 
 
 # RUN apk add --update curl && rm -rf /var/cache/apk/*
-RUN apk add --update ca-certificates && rm -rf /var/cache/apk/*
+RUN apk add --update ca-certificates openssl && rm -rf /var/cache/apk/*
+
 
 #ENV PKG_VERSION 4.1.1.161.1
 ENV PKG_VERSION 4.1.1.162
