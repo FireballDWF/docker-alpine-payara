@@ -1,4 +1,7 @@
-FROM frolvlad/alpine-oraclejdk8:latest
+#FROM frolvlad/alpine-oraclejdk8:full
+# if this works, then due to full setting providing what is needed for ejbs to resolve the deployment less than 10s issue resulting in brokeness
+#FROM frolvlad/alpine-oraclejdk8:8.121.13-full
+FROM frolvlad/alpine-oraclejdk8:8.121.13-cleaned
 # :slim is suspected to no have the javascript engine FROM frolvlad/alpine-oraclejdk8:slim
 
 # Maintainer
@@ -10,14 +13,17 @@ MAINTAINER David Filiatrault <david.filiatrault+docker@gmail.com>
 
 
 # RUN apk add --update curl && rm -rf /var/cache/apk/*
-RUN apk add --update ca-certificates openssl && rm -rf /var/cache/apk/*
+RUN apk --no-cache add --update ca-certificates openssl openssh curl groff python py-pip py-setuptools less && pip --no-cache-dir install awscli && rm -rf /var/cache/apk/*
 
 
 #ENV PKG_VERSION 4.1.1.161.1
-ENV PKG_VERSION 4.1.1.162
+#ENV PKG_VERSION 4.1.1.162  # not available anymore
+ENV PKG_VERSION 4.1.1.164
+# ENV PKG_VERSION 4.1.2.172 
+#ENV PKG_VERSION 4.1.1.171.1  # seems to be a bad one missing # EJB
 #ENV PKG_VERSION 4.1.1.154
 ENV PKG_FILE_NAME payara-$PKG_VERSION.zip
-ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.co/Payara+Downloads/Payara+$PKG_VERSION/$PKG_FILE_NAME
+ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/Payara+$PKG_VERSION/$PKG_FILE_NAME
 ENV GLASSFISH_INSTALL_DIR /opt/payara41/glassfish
 ENV APPDOMAIN payaradomain
 
