@@ -19,8 +19,8 @@ RUN apk --no-cache add --update ca-certificates openssl openssh curl groff pytho
 #ENV PKG_VERSION 4.1.1.161.1
 #ENV PKG_VERSION 4.1.1.162  # not available anymore
 #ENV PKG_VERSION 4.1.1.164
-# ENV PKG_VERSION 4.1.2.172 
-ENV PKG_VERSION 4.1.1.171.1
+ENV PKG_VERSION 4.1.2.173 
+#ENV PKG_VERSION 4.1.1.171.1
 #ENV PKG_VERSION 4.1.1.154
 ENV PKG_FILE_NAME payara-$PKG_VERSION.zip
 ENV PAYARA_PKG https://s3-eu-west-1.amazonaws.com/payara.fish/Payara+Downloads/Payara+$PKG_VERSION/$PKG_FILE_NAME
